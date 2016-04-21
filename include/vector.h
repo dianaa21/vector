@@ -53,19 +53,23 @@ friend bool operator==(const Vector &lhs, const Vector &rhs){
 	return true;
 };
 friend Vector operator+(const Vector &our, const Vector &other){
-	return vector(our)+=other.coords_[i];
+Vector vector_;
+	return vector_(our)+=other;
 };
 friend Vector operator-(const Vector &our, const Vector &other){
-return vector(our)-=other.coords_[i];
+Vector vector_;
+return vector_(our)-=other;
 };
 friend Vector operator*(const Vector &our, double num){
-return vector(our)*=num;
+Vector vector_;
+return vector_(our)*=num;
 };
 friend Vector operator*(double num, const Vector &our){
-return vector(our)*=num;
+	Vector vector_;
+return vector_(our)*=num;
 };
 friend Vector operator/(const Vector &our, double num){
-return vector(our)/=num;
+return vector_(our)/=num;
 };
 friend double operator^(const Vector &our, const Vector &other){
 	double sum = 0;
