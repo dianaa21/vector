@@ -28,22 +28,22 @@ double &operator[](int i){
 };
 Vector &operator+=(const Vector &other){
 	for (int i = 0; i < n; i++)
-		coords_[i]=coords_[i]+other.coords_[i];
+		coords_[i]+=other.coords_[i];
 	return *this;
 };
 Vector &operator-=(const Vector &other){
 	for (int i = 0; i < n; i++)
-		coords_[i]=coords_[i]-other.coords_[i];
+		coords_[i]-=other.coords_[i];
 	return *this;
 };
 Vector &operator*=(double num){
 	for (int i = 0; i < n; i++)
-		coords_[i]=coords_[i]*num;
+		coords_[i]*=num;
 	return *this;
 };
 Vector &operator/=(double num){
 	for (int i = 0; i < n; i++)
-		coords_[i]=coords_[i]/num;
+		coords_[i]/=num;
 	return *this;
 };
 friend bool operator==(const Vector &lhs, const Vector &rhs){
@@ -53,43 +53,28 @@ friend bool operator==(const Vector &lhs, const Vector &rhs){
 	return true;
 };
 friend Vector operator+(const Vector &our, const Vector &other){
-	Vector Vector_(our);
-	for (int i = 0; i < n; i++)
-		Vector_.coords_[i]=Vector_.coords_[i]+other.coords_[i];
-	return Vector_;
+	return vector(our)+=other.coords_[i];
 };
 friend Vector operator-(const Vector &our, const Vector &other){
-	Vector Vector_(our);
-	for (int i = 0; i < n; i++)
-		Vector_.coords_[i]=Vector_.coords_[i]-other.coords_[i];
-	return Vector_;
+return vector(our)-=other.coords_[i];
 };
 friend Vector operator*(const Vector &our, double num){
-	Vector Vector_(our);
-	for (int i = 0; i < n; i++)
-		Vector_.coords_[i]=Vector_.coords_[i]*num;
-	return Vector_;
+return vector(our)*=num;
 };
 friend Vector operator*(double num, const Vector &our){
-	Vector Vector_(our);
-	for (int i = 0; i < n; i++)
-		Vector_.coords_[i]=Vector_.coords_[i]*num;
-	return Vector_;
+return vector(our)*=num;
 };
 friend Vector operator/(const Vector &our, double num){
-	Vector Vector_(our);
-	for (int i = 0; i < n; i++)
-		Vector_.coords_[i]=Vector_.coords_[i]/num;
-	return Vector_;
+return vector(our)/=num;
 };
 friend double operator^(const Vector &our, const Vector &other){
-	double sum_return = 0;
+	double sum = 0;
 	for (int i = 0; i < n; i++)
-		sum_return=sum_return+our.coords_[i]*other.coords_[i];
-	return sum_return;
+		sum+=our.coords_[i]*other.coords_[i];
+	return sum;
 };
 Vector operator-()const{
-	return (Vector(*this)=Vector(*this)*(-1));
+	return (Vector(*this)*=-1);
 };
 private:
 	double coords_[n];
