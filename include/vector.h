@@ -1,5 +1,6 @@
 #ifndef VECTOR_H
 #define VECTOR_H
+
 class Vector {
 public:
 	const static unsigned long n = 3;
